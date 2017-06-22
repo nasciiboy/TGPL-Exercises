@@ -84,7 +84,7 @@ const secs   = 3               // sections of color
 const sec    = colors / secs   // length of section
 
 func MagicColor( x, scale int ) color.RGBA {
-  i := int(x * colors / scale)
+  i := x * colors / scale
 
   h := float64(i % sec) / sec
   s := 1.0
