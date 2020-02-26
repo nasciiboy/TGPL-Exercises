@@ -45,6 +45,7 @@ func main() {
   }
 
   http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+    lconf.freq = rand.Float64() * 3.0
     confs := r.URL.Query()
     for i, c := range confs {
       switch i {
@@ -81,3 +82,5 @@ func lissajous(out io.Writer, set lconfig) {
   }
   gif.EncodeAll(out, &anim) // NOTE: ignoring encoding errors
 }
+
+//! http://localhost:8000/?cycles=5&res=0.001&freq=1.49984&size=200&frames=64&delay=3
