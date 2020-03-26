@@ -14,7 +14,8 @@ func rmSpaces( s []byte ) []byte {
       continue
     } else if inspace {
       inspace = false
-      r = ' '
+      s[j] = ' '
+      j++
     }
 
     w := utf8.RuneLen( r )
@@ -26,7 +27,8 @@ func rmSpaces( s []byte ) []byte {
 }
 
 func main(){
-  a := []byte("u\t n\v  \t\ni c      o᠎᠎᠎᠎᠎᠎‍d　e")
+  a := []byte("    a \t\vspaç£ t£est \n to")
+  fmt.Printf( "%q\n", string(a) ) // "    a \t\vspaç£ t£est \n to"
   a = rmSpaces( a )
-  fmt.Println( string(a) ) // "unicode"
+  fmt.Printf( "%q\n", string(a) ) // " a spaç£ t£est to"
 }

@@ -24,9 +24,9 @@ func main() {
 
 // comma inserts commas in a non-negative decimal integer string.
 func comma(s string) string {
-  r := make( []byte, len(s) + len(s) / 3)
+  r := make( []byte, len(s) + len(s) / 3 )
 
-  for i, j, c := len( s ) - 1, len(r) - 1, 0; i >= 0; i, j = i - 1, j - 1 {
+  for i, j, c := len(s) - 1, len(r) - 1, 0; i >= 0; i, j = i - 1, j - 1 {
     r[j] = s[i]
     c++
     if c % 3 == 0 && i > 0 {
@@ -35,5 +35,6 @@ func comma(s string) string {
     }
   }
 
+  if len(r) > 0 && r[0] == 0 { return string(r[1:]) }
   return string(r)
 }
